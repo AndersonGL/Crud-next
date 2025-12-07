@@ -1,31 +1,21 @@
-import prisma from "../../../lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
+import prisma from "@/lib/prisma";
 
-// GET /api/produtos
-export async function GET() {
-  try {
-    const produtos = await prisma.produto.findMany();
-    return NextResponse.json(produtos);
-  } catch (error) {
-    console.error("Erro ao listar produtos:", error);
-    return NextResponse.json({ error: "Erro ao buscar produtos" }, { status: 500 });
-  }
+export async function GET(_req: NextRequest, { params }: { params: { id: string } }) {
+  const { id } = params;
+  const produto = await prisma.produto.findUnique({ where: { id: Number(id) } });
+  return NextResponse.json(produto);
 }
 
-// POST /api/produtos
-export async function POST(req: NextRequest) {
-  try {
-    const data = await req.json();
+export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
+  const { id } = params;
+  const dados = await req.json();
+  const produto = await prisma.produto.update({ where: { id: Number(id) }, data: dados });
+  return NextResponse.json(produto);
+}
 
-    if (!data || Object.keys(data).length === 0) {
-      return NextResponse.json({ error: "Dados inválidos" }, { status: 400 });
-    }
-
-    const novo = await prisma.produto.create({ data });
-
-    return NextResponse.json(novo, { status: 201 });
-  } catch (error) {
-    console.error("Erro ao criar produto:", error);
-    return NextResponse.json({ error: "Erro ao criar produto" }, { status: 500 });
-  }
+export async function DELETE(_req: NextRequest, { params }: { params: { id: string } }) {
+  const { id } = params;
+  await prisma.produto.delete({ where: { id: Number(id) } });
+  return NextResponse.json({ message: "Produto removido" });
 }
