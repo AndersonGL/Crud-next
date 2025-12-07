@@ -1,0 +1,146 @@
+
+
+/* ====== RESET ====== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+body {
+font-family: Arial, sans-serif;
+background: #f2f2f2;
+color: #222;
+}
+
+/* ====== CONTAINER ====== */
+.container {
+max-width: 900px;
+margin: 50px auto;
+padding: 20px;
+text-align: center;
+}
+
+/* ====== TÍTULO ====== */
+h1 {
+font-size: 2.5rem;
+margin-bottom: 20px;
+color: #0070f3;
+}
+
+/* ====== FORMULÁRIO ====== */
+form {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 10px;
+margin-bottom: 30px;
+}
+
+input[type="text"],
+input[type="number"] {
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 6px;
+width: 200px;
+}
+
+button {
+padding: 10px 20px;
+border: none;
+border-radius: 6px;
+background: #0070f3;
+color: white;
+cursor: pointer;
+transition: 0.3s;
+}
+
+button:hover {
+background: #005ad1;
+transform: scale(1.05);
+}
+
+
+.btn-delete {
+  background-color: #c0392b; /* vermelho */
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-delete:hover {
+  background-color: #e74c3c; /* vermelho mais claro no hover */
+  transform: scale(1.05);
+}
+
+
+
+/* ====== TABELA ====== */
+table {
+width: 100%;
+border-collapse: collapse;
+margin: auto;
+}
+
+th, td {
+padding: 12px;
+border: 1px solid #ddd;
+text-align: center;
+}
+
+thead {
+background: #0070f3;
+color: white;
+}
+
+tr:hover {
+background: #f1f1f1;
+}
+
+/* ====== MODAL ====== */
+.modal-overlay {
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.5);
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.modal {
+background: white;
+padding: 30px;
+border-radius: 10px;
+max-width: 400px;
+width: 90%;
+text-align: center;
+}
+
+.modal input {
+width: 80%;
+margin-bottom: 15px;
+}
+
+/* ====== RESPONSIVIDADE ====== */
+@media (max-width: 600px) {
+h1 {
+font-size: 2rem;
+}
+
+input[type="text"],
+input[type="number"] {
+width: 100%;
+}
+
+table, th, td {
+font-size: 0.9rem;
+}
+
+.modal {
+padding: 20px;
+}
+}
